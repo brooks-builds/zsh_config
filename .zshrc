@@ -130,8 +130,6 @@ alias gd="git config branch.main.description"
 alias gsd="git branch --edit-description"
 alias zca="zellij ac new-tab -l course_articles"
 
-source ~/.docker/init-zsh.sh || true # Added by Docker Desktop
-
 export EDITOR=hx
 export VISUAL=hx
 
