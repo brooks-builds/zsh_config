@@ -132,4 +132,5 @@ alias zca="zellij ac new-tab -l course_articles"
 
 export EDITOR=hx
 export VISUAL=hx
+export RUST_LOG=debug
 
