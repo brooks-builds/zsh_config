@@ -28,7 +28,13 @@ else
   exit 3
 fi
 
-if git commit -am "updating .zshrc from local" >> $LOGFILE; then
+if [[ -v 1 && -n "$1" ]]; then
+  COMMIT_MESSAGE=${1}
+else 
+  COMMIT_MESSAGE=updating .zshrc from local
+fi
+
+if git commit -am "$COMMIT_MESSAGE" >> $LOGFILE; then
   echo "commited to git"
 else
   echo "failed to commit new version of .zshrc file"

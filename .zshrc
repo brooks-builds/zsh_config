@@ -32,7 +32,6 @@ if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='hx'
-  export VISUAL=hx
 fi
 
 
@@ -74,5 +73,26 @@ export NVM_DIR="$HOME/.nvm"
 # Rust
 
 source $HOME/.cargo/env
-export RUST_LOG=debug
 
+##### Update configs #####
+
+if [[ -v ZSH_REPO && -n "$ZSH_REPO" ]]; then
+  cd $ZSH_REPO
+  if ! ./install.sh; then
+    echo "failed to update zsh config"
+  fi
+fi
+
+if [[ -v ALACRITTY_REPO && -n "$ALACRITTY_REPO" ]]; then
+  cd $ALACRITTY_REPO
+  if ! ./install.sh; then
+    echo "failed to update alacritty config"
+  fi
+fi
+
+if [[ -v ZELLIJ_REPO && -n "$ZELLIJ_REPO" ]]; then
+  cd $ZELLIJ_REPO
+  if ! ./install.sh; then
+    echo "failed to update zsh config"
+  fi
+fi
