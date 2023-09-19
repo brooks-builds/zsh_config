@@ -1,3 +1,7 @@
+# Path
+
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/opt/homebrew/bin:$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/bin/
+
 ##### OH MY ZSH config #####
 
 # Path to your oh-my-zsh installation.
@@ -61,10 +65,6 @@ alias zzshrc="zellij ac new-tab -l zshrc"
 alias gd="git config branch.main.description"
 alias gsd="git branch --edit-description"
 alias zca="zellij ac new-tab -l course_articles"
-
-# Path
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/opt/homebrew/bin:$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/bin/
 
 # NVM (Node Version Manager)
 export NVM_DIR="$HOME/.nvm"
