@@ -76,23 +76,29 @@ source $HOME/.cargo/env
 
 ##### Update configs #####
 
-if [[ -v ZSH_REPO && -n "$ZSH_REPO" ]]; then
-  cd $ZSH_REPO
-  if ! ./install.sh; then
-    echo "failed to update zsh config"
+(
+  if [[ -v ZSH_REPO && -n "$ZSH_REPO" ]]; then
+    cd $ZSH_REPO
+    if ! ./install.sh; then
+      echo "failed to update zsh config"
+    fi
   fi
-fi
+)
 
-if [[ -v ALACRITTY_REPO && -n "$ALACRITTY_REPO" ]]; then
-  cd $ALACRITTY_REPO
-  if ! ./install.sh; then
-    echo "failed to update alacritty config"
+(
+  if [[ -v ALACRITTY_REPO && -n "$ALACRITTY_REPO" ]]; then
+    cd $ALACRITTY_REPO
+    if ! ./install.sh; then
+      echo "failed to update alacritty config"
+    fi
   fi
-fi
+)
 
-if [[ -v ZELLIJ_REPO && -n "$ZELLIJ_REPO" ]]; then
-  cd $ZELLIJ_REPO
-  if ! ./install.sh; then
-    echo "failed to update zsh config"
+(
+  if [[ -v ZELLIJ_REPO && -n "$ZELLIJ_REPO" ]]; then
+    cd $ZELLIJ_REPO
+    if ! ./install.sh; then
+      echo "failed to update zsh config"
+    fi
   fi
-fi
+)
