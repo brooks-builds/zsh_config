@@ -76,29 +76,36 @@ source $HOME/.cargo/env
 
 ##### Update configs #####
 
-(
-  if [[ -v ZSH_REPO && -n "$ZSH_REPO" ]]; then
-    cd $ZSH_REPO
-    if ! ./install.sh; then
-      echo "failed to update zsh config"
-    fi
-  fi
-)
+# (
+#   if [[ -v ZSH_REPO && -n "$ZSH_REPO" ]]; then
+#     cd $ZSH_REPO
+#     if ! ./install.sh; then
+#       echo "failed to update zsh config"
+#     fi
+#   fi
+# )
 
-(
-  if [[ -v ALACRITTY_REPO && -n "$ALACRITTY_REPO" ]]; then
-    cd $ALACRITTY_REPO
-    if ! ./install.sh; then
-      echo "failed to update alacritty config"
-    fi
-  fi
-)
+# (
+#   if [[ -v ALACRITTY_REPO && -n "$ALACRITTY_REPO" ]]; then
+#     cd $ALACRITTY_REPO
+#     if ! ./install.sh; then
+#       echo "failed to update alacritty config"
+#     fi
+#   fi
+# )
 
-(
-  if [[ -v ZELLIJ_REPO && -n "$ZELLIJ_REPO" ]]; then
-    cd $ZELLIJ_REPO
-    if ! ./install.sh; then
-      echo "failed to update zsh config"
-    fi
-  fi
-)
+# (
+#   if [[ -v ZELLIJ_REPO && -n "$ZELLIJ_REPO" ]]; then
+#     cd $ZELLIJ_REPO
+#     if ! ./install.sh; then
+#       echo "failed to update zsh config"
+#     fi
+#   fi
+# )
+
+function random_port() {
+  echo $((1024 + RANDOM % (65535 - 1024 + 1)))
+}
+
+# Rust debug for tracing and other logging
+export RUST_LOG=debug
