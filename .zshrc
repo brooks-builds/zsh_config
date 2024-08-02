@@ -54,9 +54,6 @@ alias db="cd ~/code/brooks-builds/brooks_builds/database/"
 alias gp="git pull"
 alias gs="git status"
 alias ts="trunk serve"
-alias ls="exa --icons"
-alias ll="exa --icons -l"
-alias la="exa --icons -la"
 alias lt="erd -I -l -H -s name --no-git -. -y inverted"
 alias find="erd -I -l -H -p"
 alias finddir="erd -I -l -H -t dir -p"
@@ -64,6 +61,9 @@ alias zzshrc="zellij ac new-tab -l zshrc"
 alias gd="git config branch.main.description"
 alias gsd="git branch --edit-description"
 alias zca="zellij ac new-tab -l course_articles"
+alias ls="eza"
+alias ll="eza -l"
+alias la="eza -la"
 
 # NVM (Node Version Manager)
 export NVM_DIR="$HOME/.nvm"
@@ -108,4 +108,33 @@ function random_port() {
 }
 
 # Rust debug for tracing and other logging
-export RUST_LOG=debug
+export RUST_LOG=info
+
+function nyx() {
+  if [ "$1" = "" ]
+  then
+    ollama run assistant
+    return
+  fi
+
+  NYX_HISTORY_FILE=$HOME/.nyx_assistant
+  NYX_HISTORY=$(cat $NYX_HISTORY_FILE)
+
+  echo "$1" >> $NYX_HISTORY_FILE
+
+  RESPONSE=$(ollama run assistant "$NYX_HISTORY $1")
+
+  echo ""
+  echo "$RESPONSE"
+  echo "$RESPONSE" >> $NYX_HISTORY_FILE
+}
+
+function nyx_say() {
+    say -v "Melina (Enhanced)" $(nyx $1)
+}
+
+function nyx_describe() {
+  DESCRIPTION=$(ollama run llava-llama3 "Describe the provided image in as much detail as possible. Note everything you see, what colors are present, and any themes. If there are people describe what they appear to be doing. You can find the file at $1")
+
+  nyx "Describe this image and tell me what you see (the following description provided by llava-llama3 LLM): $DESCRIPTION"
+}
