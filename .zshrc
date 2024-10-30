@@ -107,9 +107,6 @@ function random_port() {
   echo $((1024 + RANDOM % (65535 - 1024 + 1)))
 }
 
-# Rust debug for tracing and other logging
-export RUST_LOG=info
-
 function nyx() {
   if [ "$1" = "" ]
   then
