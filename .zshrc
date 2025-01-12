@@ -107,31 +107,4 @@ function random_port() {
   echo $((1024 + RANDOM % (65535 - 1024 + 1)))
 }
 
-function nyx() {
-  if [ "$1" = "" ]
-  then
-    ollama run assistant
-    return
-  fi
 
-  NYX_HISTORY_FILE=$HOME/.nyx_assistant
-  NYX_HISTORY=$(cat $NYX_HISTORY_FILE)
-
-  echo "$1" >> $NYX_HISTORY_FILE
-
-  RESPONSE=$(ollama run assistant "$NYX_HISTORY $1")
-
-  echo ""
-  echo "$RESPONSE"
-  echo "$RESPONSE" >> $NYX_HISTORY_FILE
-}
-
-function nyx_say() {
-    say -v "Melina (Enhanced)" $(nyx $1)
-}
-
-function nyx_describe() {
-  DESCRIPTION=$(ollama run llava-llama3 "Describe the provided image in as much detail as possible. Note everything you see, what colors are present, and any themes. If there are people describe what they appear to be doing. You can find the file at $1")
-
-  nyx "Describe this image and tell me what you see (the following description provided by llava-llama3 LLM): $DESCRIPTION"
-}
