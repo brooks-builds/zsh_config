@@ -107,4 +107,4 @@ function random_port() {
   echo $((1024 + RANDOM % (65535 - 1024 + 1)))
 }
 
-
+source ~/.zshenv
