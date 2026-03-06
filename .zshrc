@@ -154,3 +154,4 @@ function tail_word_count() {
 export PATH="$PATH:/Users/brooks/.lmstudio/bin"
 # End of LM Studio CLI section
 
+source ~/.zshenv
