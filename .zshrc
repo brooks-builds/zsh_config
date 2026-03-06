@@ -1,6 +1,6 @@
 # Path
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/opt/homebrew/bin:$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/bin/
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/opt/homebrew/bin:/Users/brooks/Library/Python/3.9/bin:$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/bin/
 
 ##### OH MY ZSH config #####
 
@@ -18,7 +18,7 @@ ZSH_THEME="gallois"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker rust)
+plugins=(git docker rust taskwarrior)
 
 # Enable autocompletions through homebrew
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -64,6 +64,10 @@ alias zca="zellij ac new-tab -l course_articles"
 alias ls="eza"
 alias ll="eza -l"
 alias la="eza -la"
+alias bu="brew update && brew upgrade"
+alias zrl="source ~/.zshrc"
+alias obsidian="cd /Users/brooks/Library/Mobile\ Documents/iCloud~md~obsidian/Documents"
+alias tt="taskwarrior-tui"
 
 # NVM (Node Version Manager)
 export NVM_DIR="$HOME/.nvm"
@@ -107,4 +111,46 @@ function random_port() {
   echo $((1024 + RANDOM % (65535 - 1024 + 1)))
 }
 
+function word_count() {
+  FILENAME=$1
+  TARGET=$2
+
+  if [ "$FILENAME" = "" ]; then
+    echo "ERROR: missing filename."
+    exit 1
+  fi
+
+  if [ "$TARGET" -eq "" ]; then
+    TARGET=750
+  fi
+
+  COUNT=$(wc -w "$FILENAME" | awk '{print $1}')
+
+  echo "word count: $COUNT / $TARGET"
+}
+
+function tail_word_count() {
+  FILENAME=$1
+  TARGET=$2
+  SLEEP_TIME=1
+
+  if [ "$FILENAME" = "" ]; then
+    echo "ERROR: missing filename."
+    exit 1
+  fi
+
+  if [ "$TARGET" -eq "" ]; then
+    TARGET=750
+  fi
+  
+  while true; do
+    clear
+    word_count "$FILENAME" "$TARGET"
+    sleep "$((SLEEP_TIME))"
+  done
+}
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/brooks/.lmstudio/bin"
+# End of LM Studio CLI section
 
