@@ -67,7 +67,12 @@ alias la="eza -la"
 alias bu="brew update && brew upgrade"
 alias zrl="source ~/.zshrc"
 alias obsidian="cd /Users/brooks/Library/Mobile\ Documents/iCloud~md~obsidian/Documents"
-alias tt="taskwarrior-tui"
+
+# Task Warrior Aliases
+alias ttui="taskwarrior-tui"
+alias tt="clear; task today"
+alias tph="task ph"
+alias ti="task inbox"
 
 # NVM (Node Version Manager)
 export NVM_DIR="$HOME/.nvm"
