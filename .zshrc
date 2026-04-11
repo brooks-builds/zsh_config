@@ -2,6 +2,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
 setopt HIST_SAVE_NO_DUPS
 setopt INC_APPEND_HISTORY
 
@@ -16,3 +18,4 @@ alias ll='ls -lh'
 alias ls='ls -G'
 alias lsa='ls -lah'
 
+eval "$(starship init zsh)"
