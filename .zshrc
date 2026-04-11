@@ -2,11 +2,12 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/.cargo/bin"
 
 setopt HIST_SAVE_NO_DUPS
 setopt INC_APPEND_HISTORY
 
+fpath+=~/.zfunc
 autoload -U compinit; compinit
 
 alias gp="git pull"
