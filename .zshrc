@@ -2,6 +2,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
+export EDITOR=hx
+
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/.cargo/bin:$HOME/Library/Python/3.14/bin"
 
 setopt HIST_SAVE_NO_DUPS
