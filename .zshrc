@@ -2,7 +2,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/.cargo/bin:$HOME/Library/Python/3.14/bin"
+export PATH="/opt/local/bin:/opt/local/sbin:$HOME/.cargo/bin:$HOME/Library/Python/3.14/bin:$PATH"
 
 setopt HIST_SAVE_NO_DUPS
 setopt INC_APPEND_HISTORY
@@ -20,3 +20,8 @@ alias ls='ls -G'
 alias lsa='ls -lah'
 
 eval "$(starship init zsh)"
+
+function take() {
+	mkdir $1
+	cd $1
+}
