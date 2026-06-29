@@ -40,3 +40,4 @@ export NVM_DIR="$HOME/.nvm"
 
 nvm use --lts
 
+source <(sbx completion zsh)
