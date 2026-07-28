@@ -29,7 +29,8 @@ function take() {
 
 function update_ports() {
 	sudo port selfupdate && \
-	sudo port upgrade outdated
+	sudo port upgrade outdated 
+	brew update && brew upgrade
 }
 
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
@@ -41,6 +42,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm use --lts
 
 source <(sbx completion zsh)
+source <(gh completion -s zsh)
 
 # Autocomplete history with up/down arrow. Taken from https://unix.stackexchange.com/questions/621606/zsh-completion-with-up-and-down-arrows
 autoload -U up-line-or-beginning-search
@@ -49,3 +51,18 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
+
+function count_words() {
+	FILE=$1
+
+	while true; do
+		if [ -f "$1" ]; then
+			clear
+			wc -w "$1"
+			sleep 1
+		else
+			echo "file not found"
+			exit 1
+		fi
+	done
+}
