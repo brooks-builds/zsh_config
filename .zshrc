@@ -2,7 +2,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
-export PATH="/Users/brooks/.cargo/bin:/opt/local/bin:/opt/local/sbin:$HOME/.cargo/bin:$HOME/Library/Python/3.14/bin:$PATH:/opt/homebrew/bin"
+export PATH="/Users/brooks/.cargo/bin:/opt/local/bin:/opt/local/sbin:$HOME/.cargo/bin:$HOME/Library/Python/3.14/bin:$PATH:/opt/homebrew/bin:$HOME/bin"
 export EDITOR=hx
 
 setopt HIST_SAVE_NO_DUPS
@@ -27,10 +27,12 @@ function take() {
 	cd $1
 }
 
-function update_ports() {
+function update_everything() {
 	sudo port selfupdate && \
 	sudo port upgrade outdated 
-	brew update && brew upgrade
+	brew update && \
+	brew upgrade
+	rustup update
 }
 
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
