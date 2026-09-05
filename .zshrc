@@ -33,6 +33,8 @@ function update_everything() {
 	brew update && \
 	brew upgrade
 	rustup update
+	pip update -U mlx-lm
+	pip update -U mlx-vlm
 }
 
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
